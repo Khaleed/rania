@@ -32,7 +32,6 @@ logs
 .cache
 
 # yarn
-yarn.lock
 yarn-error.log*
 yarn-debug.log*
 
