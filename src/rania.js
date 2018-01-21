@@ -1,11 +1,11 @@
-import { trim, compose } from "./helpers/index";
-
 /**
  * Copyright (c) 2018-present, github/Khaleed.
  *
  * This source code is licensed under the Apache licence found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+import { trim, compose } from "./helpers/index";
 
 /**
  * Rania is a simplified toy lisp with a very small core.
