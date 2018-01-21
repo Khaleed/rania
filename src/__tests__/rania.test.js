@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { tokenize, atom } from "./../rania";
+import { tokenize, atom, parse } from "./../rania";
 
 // step 1.0 - break a program in the form of sequence of chars into tokens
 describe("tokenize", () => {
@@ -146,6 +146,23 @@ describe("expression", () => {
                 { type: "symbol", value: "x" },
                 { type: "symbol", value: "y" }
             ]
+        ]);
+    });
+});
+
+describe("parse", () => {
+    it("returns syntax tree for a program in the form of a sequence of characters", () => {
+        expect(parse("(1)")).toEqual([{ type: "number", value: 1 }]);
+    });
+    it("returns syntax tree for a program in the form of a sequence of characters", () => {
+        expect(parse("(+ (* 2 3) 4)")).toEqual([
+            { type: "symbol", value: "+" },
+            [
+                { type: "symbol", value: "*" },
+                { type: "number", value: 2 },
+                { type: "number", value: 3 }
+            ],
+            { type: "number", value: 4 }
         ]);
     });
 });
