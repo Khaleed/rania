@@ -45,7 +45,7 @@ To run tests using [Jest](https://facebook.github.io/jest/)
 
 ## Tasks
 
-- [x] Implement parse by composing tokenize and expression
+- [x] Implement parser by composing tokenize and expression
 - [x] Make environment object that maps variables to their values
 - [ ] Implement evaluator that evaluates program given a syntax tree and environment object
 - [ ] Create REPL to run Rania programs
