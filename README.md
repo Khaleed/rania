@@ -1,17 +1,17 @@
 # Rania
 
-Implementation of a succinct lisp interpreter in JavaScript.
+A succinct lisp interpreter in JavaScript.
 
 ## Methodology
 
 Rania is built using Node `9.3.0` and [Babel](https://babel.io) transpiler. Babel-register is used to compile ES6/ES7 into ES5 and run Node in development mode. 
 In production, babel-register is not used. Code is compiled before running using the `babel` command from the `babel-cli` package.
 
-## Installation
+## Instructions
 
 ### Dependencies
 
-To install
+To install dependencies
 
 `yarn install` or `npm install`
 
@@ -27,13 +27,13 @@ To build and compile using [Babel](https://babel.io)
 
 `yarn dist` or `npm run dist`
 
-To delete files in build
+To delete files in build directory
 
 `yarn clean` or `npm run clean`
 
 ### Deploy
 
-To deploy
+To deploy latest build
 
 `yarn deploy` or `npm deploy`
 
@@ -45,9 +45,8 @@ To run tests using [Jest](https://facebook.github.io/jest/)
 
 ## Tasks
 
-- [] Units tests
-- [] Implement Parse
-- [] Build environment
+- [] Implement parse
+- [] Make environment
 - [] Implement evaluator
 - [] Create REPL 
 
