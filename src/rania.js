@@ -98,7 +98,8 @@ const expression = tokens => {
  * Returns expressions as objects with type property and other properties
  * in arrays as a snytax tree
  */
+
 // parse :: [String] -> [Object]
 const parse = compose(expression, tokenize);
 
-export { tokenize, atom, parse };
+export { tokenize, atom, expression, parse };

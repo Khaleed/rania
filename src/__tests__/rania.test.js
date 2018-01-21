@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { tokenize, atom, parse } from "./../rania";
+import { tokenize, atom, expression, parse } from "./../rania";
 
 // step 1.0 - break a program in the form of sequence of chars into tokens
 describe("tokenize", () => {
