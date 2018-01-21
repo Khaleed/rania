@@ -50,4 +50,48 @@ const atom = token => {
     }
 };
 
+/**
+ * Takes tokens and verifies them according to the syntantic rules of Rania
+ * and translates them into a syntax tree.
+ *
+ * For list expressions, the first element determines what it means.
+ * If a list starts with a key word, then it is a special form.
+ * If not, it is a function call that is applied to the list
+ * of argument values.
+ *
+ * The abstract syntax tree for list expressions will consist
+ * of a matrix with expression objects.
+ *
+ * Each expression object will have a type property which describes what kind of expression
+ * it is and the properties that describe it's contents.
+ *
+ * For example //=> [{ type: "symbol", value: "+" }, [{ type: "number", value: "2" },
+ *                 { type: "number", value: "2" }]]
+ **/
+
+// expression :: [String] -> [Object]
+const expression = tokens => {
+    // if there are no more tokens, fail fast
+    if (tokens.length === 0) {
+        throw new SyntaxError(`Unexpected error ${tokens}`);
+    }
+    // grab first token
+    const token = tokens.shift(); // evil mutation of tokens
+    if (token === ")") {
+        throw new SyntaxError(`Unexpected error ${token}`);
+    } else if (token === "(") {
+        // start recursive build of our list of Objects that represent a syntax tree
+        const list = [];
+        while (tokens[0] !== ")") {
+            // recursively process expressions in the list expression
+            list.push(expression(tokens)); // [{ type: "x", value: "y" } ... ]
+        }
+        // remove processed token
+        tokens.shift(); // evil mutation of tokens
+        return list;
+    } else {
+        return atom(token);
+    }
+};
+
 export { tokenize, atom };
