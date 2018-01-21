@@ -94,16 +94,4 @@ const standardEnv = env => {
     return env;
 };
 
-export {
-    env,
-    bool,
-    nil,
-    print,
-    arithmetic,
-    logic,
-    comparison,
-    first,
-    last,
-    rest,
-    standardEnv
-};
+export { env, standardEnv };
