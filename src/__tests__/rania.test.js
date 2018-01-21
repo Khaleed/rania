@@ -67,3 +67,85 @@ describe("atom", () => {
         expect(atom(">")).toEqual({ type: "symbol", value: ">" });
     });
 });
+
+// step 2.2 - translate expressions into an abstract syntax tree
+describe("expression", () => {
+    it("throws an error when user types incorrect syntax", () => {
+        expect(() => {
+            expression([]);
+        }).toThrow();
+    });
+    it("throws an error when user types incorrect syntax", () => {
+        expect(() => {
+            expression([")", "1", ")"]);
+        }).toThrow();
+    });
+    it("returns syntax tree for a list expression", () => {
+        expect(expression(["(", "1", ")"])).toEqual([
+            {
+                type: "number",
+                value: 1
+            }
+        ]);
+    });
+    it("returns syntax tree for a list expression", () => {
+        expect(expression(["(", "+", "2", "2", ")"])).toEqual([
+            {
+                type: "symbol",
+                value: "+"
+            },
+            {
+                type: "number",
+                value: 2
+            },
+            {
+                type: "number",
+                value: 2
+            }
+        ]);
+    });
+    it("returns syntax tree for a list expression", () => {
+        expect(
+            expression(["(", "+", "(", "+", "1", "2", ")", "3", ")"])
+        ).toEqual([
+            { type: "symbol", value: "+" },
+            [
+                { type: "symbol", value: "+" },
+                { type: "number", value: 1 },
+                { type: "number", value: 2 }
+            ],
+            { type: "number", value: 3 }
+        ]);
+    });
+    it("returns syntax tree for a list expression", () => {
+        expect(
+            expression([
+                "(",
+                "define",
+                "(",
+                "sum",
+                "x",
+                "y",
+                ")",
+                "(",
+                "+",
+                "x",
+                "y",
+                ")",
+                ")"
+            ])
+        ).toEqual([
+            { type: "symbol", value: "define" },
+            [
+                { type: "symbol", value: "sum" },
+                { type: "symbol", value: "x" },
+                { type: "symbol", value: "y" }
+            ],
+            [
+                { type: "symbol", value: "+" },
+                { type: "symbol", value: "x" },
+                { type: "symbol", value: "y" }
+            ]
+        ]);
+    });
+});
