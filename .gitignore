@@ -1,0 +1,50 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+lib
+notes.md
+
+# node
+envs
+node_modules/
+build/Release
+.npm
+.node_repl_history
+.awspublish*
+logs
+*.log
+*.pid
+*.seed
+.cache
+
+# yarn
+yarn.lock
+yarn-error.log*
+yarn-debug.log*
+
+# emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+/eshell/history
+/eshell/lastdir
+.tern-port
