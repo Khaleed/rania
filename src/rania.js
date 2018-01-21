@@ -60,13 +60,13 @@ const atom = token => {
  * of argument values.
  *
  * The abstract syntax tree for list expressions will consist
- * of a matrix with expression objects.
+ * of a matrix (2-dimensional arrays) that hold expression objects.
  *
  * Each expression object will have a type property which describes what kind of expression
  * it is and the properties that describe it's contents.
  *
  * For example //=> [{ type: "symbol", value: "+" }, [{ type: "number", value: "2" },
- *                 { type: "number", value: "2" }]]
+ *                   { type: "number", value: "2" }]]
  **/
 
 // expression :: [String] -> [Object]
