@@ -12,6 +12,7 @@ import { env, standardEnv } from "../environment";
 // step 3.0 - evaluate the syntax tree and compute a value for a given environment
 describe("evaluate", () => {
     const environment = standardEnv(env);
+
     describe("atomic expressions", () => {
         it("computes a value for a number", () => {
             const exp = parse("1");
