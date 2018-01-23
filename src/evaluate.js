@@ -21,7 +21,18 @@ const literalEval = (exp, environment) => {
 
 // listEval :: [Object] -> Any
 const listEval = (exp, environment) => {
-    return null; // returning null as a stub so tests can run
+    // check that the list is empty
+    if (exp.length === 0) {
+        // return the empty list
+        return exp;
+    }
+    // check if the list only has atomic expressions
+    if (exp[0].length === undefined) {
+        // return an array of the value
+        return exp.reduce((acc, x) => acc.concat(x.value), []);
+    }
+    return null;
+    //take advantage of the recursive nature of the problem
 };
 
 /**
