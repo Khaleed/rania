@@ -32,7 +32,7 @@ const tokenize = compose(trim, tokens);
  * An atomic expression represents a Number, String, or a Symbol.
  * Number is implemented as a JS 64-bit float.
  * String as a JS string with both a single and double quotes.
- * Symbol as a JS string with double quotes.
+ * Symbol as a JS string with double quotes and it is evaluated as a variable name.
  *
  * Atom represented as a syntax object with type and value properties:
  *
