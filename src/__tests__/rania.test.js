@@ -69,19 +69,19 @@ describe("atom", () => {
 });
 
 // step 2.2 - translate expressions into an abstract syntax tree
-describe("expression", () => {
+describe("parseExpression", () => {
     it("throws an error when user types incorrect syntax", () => {
         expect(() => {
-            expression([]);
+            parseExpression([]);
         }).toThrow();
     });
     it("throws an error when user types incorrect syntax", () => {
         expect(() => {
-            expression([")", "1", ")"]);
+            parseExpression([")", "1", ")"]);
         }).toThrow();
     });
     it("returns syntax tree for a list expression", () => {
-        expect(expression(["(", "1", ")"])).toEqual([
+        expect(parseExpression(["(", "1", ")"])).toEqual([
             {
                 type: "number",
                 value: 1
@@ -89,7 +89,7 @@ describe("expression", () => {
         ]);
     });
     it("returns syntax tree for a list expression", () => {
-        expect(expression(["(", "+", "2", "2", ")"])).toEqual([
+        expect(parseExpression(["(", "+", "2", "2", ")"])).toEqual([
             {
                 type: "symbol",
                 value: "+"
@@ -106,7 +106,7 @@ describe("expression", () => {
     });
     it("returns syntax tree for a list expression", () => {
         expect(
-            expression(["(", "+", "(", "+", "1", "2", ")", "3", ")"])
+            parseExpression(["(", "+", "(", "+", "1", "2", ")", "3", ")"])
         ).toEqual([
             { type: "symbol", value: "+" },
             [
@@ -119,7 +119,7 @@ describe("expression", () => {
     });
     it("returns syntax tree for a list expression", () => {
         expect(
-            expression([
+            parseExpression([
                 "(",
                 "define",
                 "(",
@@ -150,6 +150,7 @@ describe("expression", () => {
     });
 });
 
+// parse is composed from tokenize and parseExpression - see above tests for those functions
 describe("parse", () => {
     it("returns syntax tree for a program in the form of a sequence of characters", () => {
         expect(parse("(1)")).toEqual([{ type: "number", value: 1 }]);
