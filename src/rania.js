@@ -71,8 +71,8 @@ const atom = token => {
  *                   { type: "number", value: "2" }]]
  **/
 
-// expression :: [String] -> [Object]
-const expression = tokens => {
+// parsedExpression :: [Token] -> ([Object], Object)
+const parseExpression = tokens => {
     // if there are no more tokens, fail fast
     if (tokens.length === 0) {
         throw new SyntaxError(`Unexpected error ${tokens}`);
@@ -86,7 +86,7 @@ const expression = tokens => {
         const list = [];
         while (tokens[0] !== ")") {
             // recursively process expressions in the list expression
-            list.push(expression(tokens)); // [{ type: "x", value: "y" } ... ]
+            list.push(parseExpression(tokens)); // [{ type: "x", value: "y" } ... ]
         }
         // remove processed token
         tokens.shift(); // evil mutation of tokens
@@ -98,10 +98,10 @@ const expression = tokens => {
 
 /**
  * Returns expressions as objects with type property and other properties
- * in arrays as a snytax tree
+ * in arrays as a snytax tree.
  */
 
 // parse :: [String] -> [Object]
-const parse = compose(expression, tokenize);
+const parse = compose(parseExpression, tokenize);
 
-export { tokenize, atom, expression, parse };
+export { tokenize, atom, parseExpression, parse };
