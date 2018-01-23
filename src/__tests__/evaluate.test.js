@@ -54,5 +54,9 @@ describe("evaluate", () => {
             const exp = parse('("yo!" "what" "up")');
             expect(evaluate(exp, environment)).toEqual(["yo!", "what", "up"]);
         });
+        it("returns a number for an expression with arithmetic operator", () => {
+            const exp = parse("(+ 2 2)");
+            expect(evaluate(exp, environment)).toEqual(4);
+        });
     });
 });
