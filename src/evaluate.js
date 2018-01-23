@@ -28,11 +28,10 @@ const listEval = (exp, environment) => {
     }
     // check if the list only has atomic expressions
     if (exp[0].length === undefined) {
-        // return an array of the value
+        // return an array of the values
         return exp.reduce((acc, x) => acc.concat(x.value), []);
     }
     return null;
-    //take advantage of the recursive nature of the problem
 };
 
 /**
