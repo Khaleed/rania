@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// symbolEval :: (Object, Object)  -> Any
+// symbolEval :: (Object, Object) -> Any
 const symbolEval = (exp, environment) => {
     return exp.type === "symbol"
         ? environment[exp.value]
         : new ReferenceError(`Undefined variable ${exp.type}`);
 };
 
-// literalEval :: (Object, Object)  -> Any
+// literalEval :: (Object, Object) -> Any
 const literalEval = (exp, environment) => {
     return exp.type === "number" || exp.type === "string"
         ? exp.value
