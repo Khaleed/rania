@@ -32,4 +32,27 @@ describe("evaluate", () => {
             expect(evaluate(exp, environment)).toBeUndefined();
         });
     });
+
+    describe("list expressions", () => {
+        it("returns an empty list", () => {
+            const exp = parse("()");
+            expect(evaluate(exp, environment)).toEqual([]);
+        });
+        it("returns a list with a number", () => {
+            const exp = parse("(1)");
+            expect(evaluate(exp, environment)).toEqual([1]);
+        });
+        it("returns a list with numbers", () => {
+            const exp = parse("(2 4 6)");
+            expect(evaluate(exp, environment)).toEqual([2, 4, 6]);
+        });
+        it("returns a list with a string", () => {
+            const exp = parse('("hi")');
+            expect(evaluate(exp, environment)).toEqual(["hi"]);
+        });
+        it("returns a list with several strings", () => {
+            const exp = parse('("yo!" "what" "up")');
+            expect(evaluate(exp, environment)).toEqual(["yo!", "what", "up"]);
+        });
+    });
 });
