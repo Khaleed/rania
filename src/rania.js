@@ -14,15 +14,17 @@ import { trim, compose } from "./helpers/index";
  * characters that represent a program.
  */
 
-// token :: String -> [String]
-const token = program =>
-    program
-        .replace(/\(/g, " ( ")
-        .replace(/\)/g, " ) ")
-        .split(/ +/);
+// replace :: String -> String
+const replace = program => program.replace(/\(/g, " ( ").replace(/\)/g, " ) ");
 
-// tokenize :: String -> [String]
-const tokenize = compose(trim, token);
+// split :: String -> [String]
+const split = program => program.split(/ +/);
+
+// tokens :: String -> [Token]
+const tokens = compose(split, replace);
+
+// tokenize :: String -> [Token]
+const tokenize = compose(trim, tokens);
 
 /**
  * Everything in Rania is an expression.
