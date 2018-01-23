@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2018-present, github/Khaleed.
+ *
+ * This source code is licensed under the Apache licence found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import { evaluate } from "../evaluate";
 import { parse } from "../rania";
 import { env, standardEnv } from "../environment";
