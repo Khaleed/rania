@@ -2,20 +2,21 @@
     "name": "rania",
     "version": "1.0.0",
     "description": "a succinct toy lisp language",
-    "main": "rania.js",
+    "main": "parser.js",
     "dependencies": {
         "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.0",
-        "babel-eslint": "^8.0.3",
-        "babel-jest": "^22.0.3",
-        "babel-preset-env": "^1.6.1",
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^8.2.6",
+        "babel-jest": "^22.4.4",
+        "babel-preset-env": "^1.7.0",
         "babel-register": "^6.26.0",
-        "chalk": "^2.3.0",
-        "eslint": "^4.13.1",
-        "jest": "^22.0.3",
-        "jest-cli": "^22.0.4",
-        "nodemon": "^1.14.3",
-        "prettier": "^1.9.2"
+        "chalk": "^2.4.1",
+        "eslint": "^4.19.1",
+        "jest": "^22.4.4",
+        "jest-cli": "^22.4.4",
+        "nodemon": "^1.18.3",
+        "npm": "^5.10.0",
+        "prettier": "^1.14.2"
     },
     "jest": {
         "transform": {
