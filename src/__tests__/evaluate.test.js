@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2018-present, github/Khaleed.
+ * Copyright © 2018-present, github/Khaleed.
  *
  * This source code is licensed under the Apache licence found in the
  * LICENSE file in the root directory of this source tree.
  */
 
 import { evaluate } from "../evaluate";
-import { parse } from "../rania";
+import { parse } from "../parser";
 import { env, standardEnv } from "../environment";
 
 // step 3.0 - evaluate the syntax tree and compute a value for a given environment
