@@ -1,17 +1,17 @@
-/** Copyright (c) 2018-present, github/Khaleed.
+/** Copyright © 2018-present, github/Khaleed.
  *
  * This source code is licensed under the Apache licence found in the
  * LICENSE file in the root directory of this source tree.
  */
 
-/**
+/*
  * Environment object maps symbols to their values.
  * This environment can be extended using user-defined variables
  * by using `(define symbol value)`
- **/
+ */
 
-// environment object that represents global scope
-const env = Object.create(null); // env initially has no properties
+// environment object that represents the global scope
+const env = Object.create(null);
 
 // nil :: Object -> Object
 const nil = env => {
@@ -39,7 +39,7 @@ const print = env => {
 const arithmetic = env => {
     const operators = ["+", "-", "*", "/"];
     return operators.reduce((acc, op) => {
-        env[op] = new Function("a, b", "return a " + op + " b;");
+        env[op] = new Function("x, y", "return x " + op + " y;");
         return acc;
     }, env);
 };
