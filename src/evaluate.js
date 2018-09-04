@@ -24,7 +24,6 @@ const symbolEval = (exp, environment) =>
  * Produces a value from symbols given an environment
  */
 const literalEval = (exp, environment) => {
-    console.log(exp);
     return exp.type === "number" || exp.type === "string"
         ? exp.value
         : symbolEval(exp, environment);
