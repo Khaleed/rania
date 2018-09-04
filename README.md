@@ -43,12 +43,18 @@ To run tests using [Jest](https://facebook.github.io/jest/)
 
 `yarn test` or `npm test`
 
+
+## REPL
+
+To start using Rania, first build using `npm run dist` and then run `node build/repl`
+
+
 ## Tasks
 
 - [x] Implement parser that creates tokens and an abstract syntax tree
 - [x] Make environment object that maps variables to their values
-- [ ] Implement evaluator that evaluates program given a syntax tree and environment object
-- [ ] Create REPL to run Rania programs
+- [x] Implement evaluator that evaluates program given a syntax tree and environment object
+- [x] Create REPL to run Rania programs
 
 ## License 
 Rania is released under the <a href="https://opensource.org/licenses/Apache-2.0">The Apache 2.0 License<a/>.
