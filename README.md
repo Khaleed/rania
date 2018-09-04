@@ -44,7 +44,7 @@ To run tests using [Jest](https://facebook.github.io/jest/)
 `yarn test` or `npm test`
 
 
-## REPL
+### REPL
 
 To start using Rania, first build using `npm run dist` and then run `node build/repl`
 
