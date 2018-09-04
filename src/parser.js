@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-present, github/Khaleed.
+ * Copyright © 2018-present, github/Khaleed.
  *
  * This source code is licensed under the Apache licence found in the
  * LICENSE file in the root directory of this source tree.
@@ -31,8 +31,8 @@ const tokenize = compose(trim, tokens);
  *
  * An atomic expression represents a Number, String, or a Symbol.
  * Number is implemented as a JS 64-bit float.
- * String as a JS string with both a single and double quotes.
- * Symbol as a JS string with double quotes and it is evaluated as a variable name.
+ * String is a JS string with both a single and double quotes. '"hello"' "hello"
+ * Symbol is a JS string with double quotes and it is evaluated as a variable name.
  *
  * Atom represented as a syntax object with type and value properties:
  *
@@ -40,13 +40,13 @@ const tokenize = compose(trim, tokens);
  *
  */
 
-// atom :: String -> Object
+// atom :: String -> type :: Number String value :: Number String
 const atom = token => {
     if (!isNaN(parseFloat(token)) && !isNaN(token - 1)) {
         return { type: "number", value: parseFloat(token) };
         // check if token is a string ->  a string starts with two quotes
-    } else if (token.indexOf('"') >= 0) {
-        return { type: "string", value: token.slice(1, -1) }; // remove single quotes
+    } else if (token.indexOf('"') === 0) {
+        return { type: "string", value: token.slice(1, -1) }; // remove single quotes // {type: "string", value: "hi"}
     } else {
         return { type: "symbol", value: token };
     }
@@ -71,28 +71,25 @@ const atom = token => {
  *                   { type: "number", value: "2" }]]
  **/
 
-// parsedExpression :: [Token] -> ([Object], Object)
+// parsedExpression :: [Token] -> SyntaxTree
 const parseExpression = tokens => {
-    // if there are no more tokens, fail fast
     if (tokens.length === 0) {
         throw new SyntaxError(`Unexpected error ${tokens}`);
     }
-    // grab first token
-    const token = tokens.shift(); // evil mutation of tokens
-    if (token === ")") {
-        throw new SyntaxError(`Unexpected error ${token}`);
-    } else if (token === "(") {
+    const first = tokens.shift(); // evil mutation of tokens
+    if (first === ")") {
+        throw new SyntaxError(`Unexpected error ${first}`);
+    } else if (first === "(") {
         // start recursive build of our list of Objects that represent a syntax tree
         const list = [];
         while (tokens[0] !== ")") {
-            // recursively process expressions in the list expression
             list.push(parseExpression(tokens)); // [{ type: "x", value: "y" } ... ]
         }
         // remove processed token
         tokens.shift(); // evil mutation of tokens
         return list;
     } else {
-        return atom(token);
+        return atom(first);
     }
 };
 
@@ -101,7 +98,7 @@ const parseExpression = tokens => {
  * in arrays as a snytax tree.
  */
 
-// parse :: [String] -> [Object]
+// parse :: [String] -> [type :: Number String Symbol value :: String Number]
 const parse = compose(parseExpression, tokenize);
 
 export { tokenize, atom, parseExpression, parse };
