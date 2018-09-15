@@ -21,7 +21,8 @@
     "jest": {
         "transform": {
             ".*": "<rootDir>/node_modules/babel-jest"
-        }
+        },
+        "testEnvironment": "node"
     },
     "scripts": {
         "start": "nodemon bin/dev",
