@@ -45,7 +45,7 @@ const atom = token => {
     if (!isNaN(parseFloat(token)) && !isNaN(token - 1)) {
         return { type: "number", value: parseFloat(token) };
         // check if token is a string ->  a string starts with two quotes
-    } else if (token.indexOf('"') === 0) {
+    } else if (token.startsWith('"')) {
         return { type: "string", value: token.slice(1, -1) }; // remove single quotes // {type: "string", value: "hi"}
     } else {
         return { type: "symbol", value: token };
